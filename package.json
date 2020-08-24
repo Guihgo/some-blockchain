@@ -1,0 +1,9 @@
+{
+  "name": "someBlockChain",
+  "version": "1.0.0",
+  "description": "Some BlockChain",
+  "main": "index.js",
+  "author": "Guihgo",
+  "license": "MIT",
+  "private": false
+}
