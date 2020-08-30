@@ -2,7 +2,7 @@ import BlockChain from '../core/BlockChain'
 import Block, { payloadBlock } from '../core/Block'
 
 describe('BlockChain', () => {
-  const blockChain = new BlockChain()
+  const blockChain = new BlockChain(4)
 
   it('Is a BlockChain', () => {
     expect(blockChain).toBeInstanceOf(BlockChain)

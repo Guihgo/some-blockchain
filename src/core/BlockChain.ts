@@ -2,10 +2,9 @@ import Block from './Block'
 
 export default class BlockChain {
     chain: Block[]
-    difficulty: number
-    constructor () {
+    constructor (private difficulty = 3) {
       this.chain = [this.createGenesisBlock()]
-      this.difficulty = 2
+      // this.difficulty = 2
     }
 
     createGenesisBlock () {
