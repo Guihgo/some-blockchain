@@ -23,8 +23,8 @@ export default class BlockChain {
 
     addBlock (newBlock: Block) {
       newBlock.payload.previousHash = this.getLatestBlock().hash
-      newBlock.hash = newBlock.calculateHash()
-      // newBlock.mine(this.difficulty)
+      // newBlock.hash = newBlock.calculateHash()
+      newBlock.mine(this.difficulty)
       this.chain.push(newBlock)
     }
 

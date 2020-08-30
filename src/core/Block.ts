@@ -21,13 +21,14 @@ export default class Block {
     calculateHash (): String {
       const HashSHA265 = Crypto.createHash('sha256')
       HashSHA265.update(JSON.stringify(this.payload))
-      return HashSHA265.digest('base64')
+      return HashSHA265.digest('hex')
     }
 
     mine (difficulty: number) {
       if (this.payload.nonce === undefined) this.payload.nonce = 0
-      while (this.hash.substring(0, difficulty) !== Array(difficulty).join('0')) {
-        console.log('try nonce', this.payload.nonce)
+      const difficultyString = new Array(difficulty + 1).join('0')
+      while (this.hash.substring(0, difficulty) !== difficultyString) {
+        console.log('try nonce', this.payload.nonce, this.hash)
         this.payload.nonce++
         this.hash = this.calculateHash()
       }
