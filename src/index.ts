@@ -9,5 +9,6 @@ const block = new Block({
   index: 1,
   timestamp: '29/08'
 })
-console.log(block.calculateHash())
-block.mine(2)
+// console.log(block.calculateHash())
+block.mine(4).then(hash => console.log(hash))
+  .catch(e => console.error('error', e))

@@ -24,14 +24,15 @@ export default class Block {
       return HashSHA265.digest('hex')
     }
 
-    mine (difficulty: number) {
-      if (this.payload.nonce === undefined) this.payload.nonce = 0
-      const difficultyString = new Array(difficulty + 1).join('0')
-      while (this.hash.substring(0, difficulty) !== difficultyString) {
-        console.log('try nonce', this.payload.nonce, this.hash)
-        this.payload.nonce++
-        this.hash = this.calculateHash()
-      }
-      console.log('Block Mined', this.hash)
+    mine (difficulty: number) : Promise<String> {
+      return new Promise((resolve, reject) => {
+        if (this.payload.nonce === undefined) this.payload.nonce = 0
+        const difficultyString = new Array(difficulty + 1).join('0')
+        while (this.hash.substring(0, difficulty) !== difficultyString) {
+          this.payload.nonce++
+          this.hash = this.calculateHash()
+        }
+        resolve(this.hash)
+      })
     }
 }
